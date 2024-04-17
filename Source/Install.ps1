@@ -10,13 +10,29 @@ A script to install Best Practice software and it's pre-requisites from an iso.
 https://github.com/Jaika1/bpintunewin
 #>
 
+#Load values from Config.ps1
+. $PSScriptRoot\Config.ps1
+
 #Pre-declared Variables
 $location = $(Get-Location)
 $logDir = "C:/BPIntuneLogs/"
 
 #Find and Mount BP image
-$bpImage = Get-ChildItem -Path $location -Filter *.iso -File
-$mount = Mount-DiskImage -ImagePath "$($location)\$($bpImage)" -PassThru
+Switch ($installSource) {
+    0 {
+        $mount = Mount-DiskImage -ImagePath $isoPath -PassThru
+    }
+    1 {
+        #$bpImage = Get-ChildItem -Path $location -Filter *.iso -File
+        #$mount = Mount-DiskImage -ImagePath "$($location)\$($bpImage)" -PassThru
+        Write-Output "Installation source not yet implemented!"
+        exit 1
+    }
+    Default {
+        Write-Output "Invalid installation source!"
+        exit 1
+    }
+}
 $mountDir = ($mount | Get-Volume).DriveLetter + ":\"
 
 #Install pre-reqs
