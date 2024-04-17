@@ -1,4 +1,14 @@
-#As you may be able to tell, Powershell is a relatively fresh thought for me. Probably room for tidy/best practices.
+<#
+.SYNOPSIS
+Installs Best Practice software and it's pre-requisites from iso.
+.DESCRIPTION
+A script to install Best Practice software and it's pre-requisites from an iso.
+.NOTES
+        Name       : BP Intune Win32 (Install)
+        Author     : Jack Roennfeldt
+.LINK 
+https://github.com/Jaika1/bpintunewin
+#>
 
 #Pre-declared Variables
 $location = $(Get-Location)
