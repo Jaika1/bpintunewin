@@ -25,8 +25,8 @@ Cloning this repository is a simple process, although you must remember to inclu
 > You may still create and commit changes within this repository even after placing the iso in this directory as the root .gitignore file is configured to ignore .exe and .iso files.
 
 ## Build
-1. Review and modify the `Source\Config.ps1` file as required. In particular, make sure you assign a correct path to `$isoPath` when `$installSource = 0`. This will be the location (including file name and extension) of the BP iso you downloaded and copied before in the [Prepare](#Prepare) step.
-After properly following the [Prepare](#Prepare) section for your given scenario, Run `built.bat` and wait for the output to finish. Once completed, you should find your intunewin at `Output\Install.intunewin`.
+Review and modify the `Source\Config.ps1` file as required. In particular, make sure you assign a correct path to `$isoPath` when `$installSource = 0`. This will be the location (including file name and extension) of the BP iso you downloaded and copied before in the [Prepare](#Prepare) step.
+After properly following the [Prepare](#Prepare) section for your given scenario, Run `built.bat` and wait for the output to finish. Once completed, you should find your intunewin at `Output\Install.intunewin`. Once this succeeds, proceed to the [Deploy](#Deploy) step.
 
 ## Deploy
 > [!NOTE]
