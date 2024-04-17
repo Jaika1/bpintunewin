@@ -28,6 +28,10 @@ Switch ($installSource) {
         Write-Output "Installation source not yet implemented!"
         exit 1
     }
+    2 {
+        $bpImage = Get-ChildItem -Path $location -Filter *.iso -File
+        $mount = Mount-DiskImage -ImagePath "$($location)\$($bpImage)" -PassThru
+    }
     Default {
         Write-Output "Invalid installation source!"
         exit 1
