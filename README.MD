@@ -18,7 +18,7 @@ Cloning this repository is a simple process, although you must remember to inclu
 2. Run `built.bat` and wait for the output to finish. Once completed, you should find your intunewin at `Output\Install.intunewin`.
 
 ## Deploy
-> [!INFO]
+> [!NOTE]
 > Coming soon...
 
 ## Roadmap/Todo
