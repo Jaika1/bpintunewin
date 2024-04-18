@@ -9,6 +9,7 @@ This script was tested on a Windows 11 Enterprise Multi-session (21H2) VM inside
 Cloning this repository is a simple process, although you must remember to include the `--recursive` flag! After installing [Git for Windows](https://gitforwindows.org/), navigate to the directory where you'd like to clone this repo into and run `git clone https://github.com/Jaika1/bpintunewin.git --recursive`
 
 ## Prepare
+Before all else, I'd reccommend you take a dig into `Sources\BPconfig.ini` and ensure it's configured to go as you'd prefer. Once you've verified this, move on to any of the methods shown below.
 ### Method 0 - Read BP ISO from File Share
 1. Deploy and configure a file-share if you don't have an existing one on your local network. Worst-case this can be a basic Windows Server VM hosting an SMB share.
 2. Download your required Best Practice installer ISO. Place this ISO on the share and ensure it is accessable from your client machines in which you'd like to install best practice from.
@@ -29,8 +30,19 @@ Review and modify the `Source\Config.ps1` file as required. In particular, make 
 After properly following the [Prepare](#Prepare) section for your given scenario, Run `built.bat` and wait for the output to finish. Once completed, you should find your intunewin at `Output\Install.intunewin`. Once this succeeds, proceed to the [Deploy](#Deploy) step.
 
 ## Deploy
-> [!NOTE]
-> Coming soon...
+ - Open your [Intune Portal](https://intune.microsoft.com) and navigate to **Apps -> Windows**
+ - Select **Add**. Under **App type**, choose `Windows app (Win32)`, then press **Select**.
+ - Click **Select app package file**, then navigate to and select your `Install.intunewin` file.
+ - Enter something informative into the **Name** field, and under **Publisher**, insert `Best Practice Software`, then select **Next**.
+ - Configure the **Program** tab as follows:
+   - **Install command**: `%SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe -windowstyle hidden -executionpolicy bypass -command .\Install.ps1`
+   - **Uninstall command**: `%SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe -windowstyle hidden -executionpolicy bypass -command .\Uninstall.ps1`
+   - **Device restart behavior**: `No specific action`
+ - Under **Requirements**, set **Operating system architecture** to `64-bit` and **Minimum operating system** to the lowest supported by your version of Best Practice. Or just wing it if you know what you're doing, whatever works.
+ - For **Detection rules**, set **Rule format** to `Use a custom detection script`, then browse for `Source\Detect.ps1` in this repo. Leave other options the same.
+ - Feel free to skip the **Dependencies** and **Supersedence** tabs if you don't have a specific use for them.
+ - Configure the **Assignments** tab as per your requirements, then select **Review + Create**
+ - Keep your browser open and connected to the internet as the intunewin file uploads and configures. Monitor the progress of this via the notification bell in the top right.
 
 ## Roadmap/Todo
 ### Essentials
