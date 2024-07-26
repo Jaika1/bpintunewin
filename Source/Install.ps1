@@ -56,3 +56,6 @@ Start-Process -Wait -WorkingDirectory $mountDir -FilePath "Install\BP_SQLEx_Setu
 
 #Unmount BP ISO
 $mount | Dismount-DiskImage
+
+#Delete BPconfig.ini from root
+Remove-Item -Force -Path "C:\BPconfig.ini"

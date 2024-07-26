@@ -17,4 +17,4 @@ https://github.com/Jaika1/bpintunewin
 $installSource = 0
 
 # Network path to the ISO. Only used when $installSource = 0
-$isoPath = "\\<file-server>\path\to\image.iso"
+$isoPath = ""

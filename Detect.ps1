@@ -15,4 +15,5 @@ $progNames = Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\Curre
 #Check if anything was found and assign variable
 $notInstalled = $null -eq $progNames
 #Basic boolean logic. False=0, True=1. If return is 1, Intune will mark the software for installation.
-exit $notInstalled
+Write-Host "Not installed: $notInstalled"
+exit [int]$notInstalled

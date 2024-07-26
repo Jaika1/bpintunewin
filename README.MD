@@ -35,11 +35,11 @@ After properly following the [Prepare](#Prepare) section for your given scenario
  - Click **Select app package file**, then navigate to and select your `Install.intunewin` file.
  - Enter something informative into the **Name** field, and under **Publisher**, insert `Best Practice Software`, then select **Next**.
  - Configure the **Program** tab as follows:
-   - **Install command**: `%SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe -windowstyle hidden -executionpolicy bypass -command .\Install.ps1`
-   - **Uninstall command**: `%SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe -windowstyle hidden -executionpolicy bypass -command .\Uninstall.ps1`
+   - **Install command**: `%SystemRoot%\SysWOW64\WindowsPowerShell\v1.0\powershell.exe -windowstyle hidden -executionpolicy bypass -command .\Install.ps1`
+   - **Uninstall command**: `%SystemRoot%\SysWOW64\WindowsPowerShell\v1.0\powershell.exe -windowstyle hidden -executionpolicy bypass -command .\Uninstall.ps1`
    - **Device restart behavior**: `No specific action`
  - Under **Requirements**, set **Operating system architecture** to `64-bit` and **Minimum operating system** to the lowest supported by your version of Best Practice. Or just wing it if you know what you're doing, whatever works.
- - For **Detection rules**, set **Rule format** to `Use a custom detection script`, then browse for `Source\Detect.ps1` in this repo. Leave other options the same.
+ - For **Detection rules**, set **Rule format** to `Use a custom detection script`, then browse for `Detect.ps1` in this repo. Leave other options the same.
  - Feel free to skip the **Dependencies** and **Supersedence** tabs if you don't have a specific use for them.
  - Configure the **Assignments** tab as per your requirements, then select **Review + Create**
  - Keep your browser open and connected to the internet as the intunewin file uploads and configures. Monitor the progress of this via the notification bell in the top right.
